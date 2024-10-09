@@ -12,50 +12,56 @@
     <div id="container"></div>
     <script>
 
-        async function verifyGameExistence(name){
-            
-            return await (new Promise(function(ok, err){
-                  if(name==null)
-                      return ok(false);
-                
-                
-                    fetch(`/games/${name}`, { method: 'HEAD' })
-                    .then(response => {
-                        if (response.ok) {
-                            ok(true);
-                        }
-                    }).catch(e => {
-                        ok(false);
-                    })
-                      
-            }) )
+async function verifyGameExistence(name) {
+    return new Promise(async (resolve, reject) => {
+        if (name == null) {
+            return resolve(false);
         }
 
-        async function Load(){
-
-            const url = new URL(window.location.href);
-            const params = new URLSearchParams(url.search);
-            const game = params.get("game");
-
-            var game_exists = false;
-            await verifyGameExistence(game).then((state)=>{
-                game_exists = state;
-            })
-
-            if(game_exists) {
-
-                 window.RufflePlayer = window.RufflePlayer || {};
-                window.addEventListener("load", (event) => {
-                    const ruffle = window.RufflePlayer.newest();
-                    const player = ruffle.createPlayer();
-                    const container = document.getElementById("container");
-                    container.appendChild(player);
-                    player.load(`/games/${game}`);
-                });
+        try {
+            const response = await fetch(`/games/${name}`, { method: 'HEAD' });
+            if (response.ok) {
+                resolve(true);
             } else {
-                document.getElementById("status").innerText = "O jogo indicado não está disponível."
+                resolve(false);
             }
+        } catch (e) {
+            resolve(false);
         }
+    });
+}
+
+async function Load() {
+    console.log('1');
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const game = params.get("game");
+    console.log('2');
+    
+    let game_exists = false;
+
+    try {
+        game_exists = await verifyGameExistence(game);
+    } catch (e) {
+        console.error('Erro ao verificar a existência do jogo:', e);
+    }
+    
+    console.log('3');
+
+    if (game_exists) {
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", (event) => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("container");
+            container.appendChild(player);
+            player.load(`/games/${game}`);
+        });
+    } else {
+        document.getElementById("status").innerText = "O jogo indicado não está disponível.";
+    }
+}
+
         
         
 
