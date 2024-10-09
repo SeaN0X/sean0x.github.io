@@ -18,17 +18,15 @@
                   if(name==null)
                       ok(false);
                 
-                    try {
-                        fetch(`/games/${name}`, { method: 'HEAD' })
-                        .then(response => {
-                            if (response.ok) {
-                                ok(true)
-                            }
-                        })
-                    } catch(e){
+                
+                    fetch(`/games/${name}`, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            ok(true)
+                        }
+                    }).catch(e){
                         ok(false)
                     }
-        
             }) )
         }
 
