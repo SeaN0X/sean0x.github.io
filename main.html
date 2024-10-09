@@ -6,18 +6,58 @@
     <title>Meu Site</title>
 </head>
 <body>
+
+
        <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <div id="container"></div>
     <script>
-      console.log('3')
-          window.RufflePlayer = window.RufflePlayer || {};
-    window.addEventListener("load", (event) => {
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-        const container = document.getElementById("container");
-        container.appendChild(player);
-        player.load("/impossible_quiz_deluxe.swf");
-    });
+
+        async function verifyGameExistence(name){
+            
+            return await (new Promise(function(ok, err){
+                  if(name==null)
+                      ok(false);
+                
+                  fetch(`/games/${name}`, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            ok(true)
+                        } else {
+                            ok(false)
+                        }
+                    })
+            }) )
+        }
+
+        async function Load(){
+
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            const game = params.get("game");
+
+            var game_exists = false;
+            await verifyGameExistence(game).then((state)=>{
+                game_exists = state;
+            })
+
+            if(game_exists) {
+
+                 window.RufflePlayer = window.RufflePlayer || {};
+                window.addEventListener("load", (event) => {
+                    const ruffle = window.RufflePlayer.newest();
+                    const player = ruffle.createPlayer();
+                    const container = document.getElementById("container");
+                    container.appendChild(player);
+                    player.load(`/games/${game}`);
+                });
+            } else {
+                document.getElementById("status").innerText = "O jogo indicado não está disponível."
+            }
+        }
+        
+        
+
     </script>
+    <h3 id="status"></h3>
 </body>
 </html>
