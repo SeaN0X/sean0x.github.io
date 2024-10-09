@@ -6,6 +6,18 @@
     <title>Meu Site</title>
 </head>
 <body>
-    <h1>TESTE</h1>
+       <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    
+    <script>
+      console.log('3')
+          window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", (event) => {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("container");
+        container.appendChild(player);
+        player.load("/impossible_quiz_deluxe.swf");
+    });
+    </script>
 </body>
 </html>
