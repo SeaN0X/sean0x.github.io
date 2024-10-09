@@ -16,7 +16,7 @@
             
             return await (new Promise(function(ok, err){
                   if(name==null)
-                      ok(false);
+                      return ok(false);
                 
                 
                     fetch(`/games/${name}`, { method: 'HEAD' })
