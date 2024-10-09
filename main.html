@@ -22,11 +22,12 @@
                     fetch(`/games/${name}`, { method: 'HEAD' })
                     .then(response => {
                         if (response.ok) {
-                            ok(true)
+                            ok(true);
                         }
-                    }).catch(e){
-                        ok(false)
-                    }
+                    }).catch(e => {
+                        ok(false);
+                    })
+                      
             }) )
         }
 
