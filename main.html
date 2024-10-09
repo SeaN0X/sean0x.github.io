@@ -50,20 +50,22 @@ async function Load() {
 
     if (game_exists) {
         window.RufflePlayer = window.RufflePlayer || {};
-        window.addEventListener("load", (event) => {
-            const ruffle = window.RufflePlayer.newest();
-            const player = ruffle.createPlayer();
-            const container = document.getElementById("container");
-            container.appendChild(player);
-            player.load(`/games/${game}`);
-        });
+       
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("container");
+        container.appendChild(player);
+        player.load(`/games/${game}`);
+        
     } else {
         document.getElementById("status").innerText = "O jogo indicado não está disponível.";
     }
 }
 
         
-        
+        window.addEventListener("load", (event) => {
+            Load()
+        }
 
     </script>
     <h3 id="status"></h3>
