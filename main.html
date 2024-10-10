@@ -19,13 +19,19 @@ async function verifyGameExistence(name) {
         }
 
         try {
-            const response = await fetch(`/games/${game.split(".sfw")[0]}/game.swf`, { method: 'HEAD' });
+            const parsed = name.split(".swf")[0]
+            const response = await fetch(`/games/${parsed}/game.swf`, { method: 'HEAD' });
+
+            console.log(parsed)
             if (response.ok) {
                 resolve(true);
+                console.log(true)
             } else {
+                console.log(false)
                 resolve(false);
             }
         } catch (e) {
+            console.log(e)
             resolve(false);
         }
     });
