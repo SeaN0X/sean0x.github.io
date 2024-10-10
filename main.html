@@ -19,7 +19,7 @@ async function verifyGameExistence(name) {
         }
 
         try {
-            const response = await fetch(`/games/${name}`, { method: 'HEAD' });
+            const response = await fetch(`/games/${game.split(".sfw")[0]}/${game}`, { method: 'HEAD' });
             if (response.ok) {
                 resolve(true);
             } else {
@@ -55,7 +55,7 @@ async function Load() {
         const player = ruffle.createPlayer();
         const container = document.getElementById("container");
         container.appendChild(player);
-        player.load(`/games/${game}`);
+        player.load(`/games/${game.split(".sfw")[0]}/${game}`);
         
     } else {
         document.getElementById("status").innerText = "O jogo indicado não está disponível.";
