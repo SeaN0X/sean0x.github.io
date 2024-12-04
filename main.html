@@ -66,14 +66,13 @@ async function Load() {
         container.appendChild(player);
 
          if(atob(game).match("https")){
+                 console.log("loading "+atob(game))
                 player.load(atob(game));
-        } else {
+         }  else {
                     const parsed = game.split(".swf")[0]
                     player.load(`/games/${parsed}/game.swf`);
-         }
+          }
 
-        
-    
         
     } else
         document.getElementById("status").innerText = "O jogo indicado não está disponível.";
