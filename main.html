@@ -74,15 +74,17 @@ async function Load() {
           }
 
         
-    } else
+    } else {
         document.getElementById("status").innerText = "O jogo indicado não está disponível.";
+    
     }
-}
 
+}
         
         window.addEventListener("load", (event) => {
             Load()
         })
+
 
     </script>
     <h3 id="status"></h3>
