@@ -55,9 +55,13 @@ async function Load() {
     console.log('3');
 
 
+        var is_encoded = false;
+        try{
+            console.log(atob(game))
+            is_encoded = true
+        }catch(e){}
 
-
-    if (game_exists ) {
+    if (game_exists || is_encoded ) {
         window.RufflePlayer = window.RufflePlayer || {};
        
         const ruffle = window.RufflePlayer.newest();
@@ -65,11 +69,7 @@ async function Load() {
         const container = document.getElementById("container");
         container.appendChild(player);
 
-        var is_encoded = false;
-        try{
-            console.log(atob(game))
-            is_encoded = true
-        }catch(e){}
+
 
          if(is_encoded){
                  console.log("loading "+atob(game))
