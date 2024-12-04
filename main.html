@@ -54,7 +54,10 @@ async function Load() {
     
     console.log('3');
 
-    if (game_exists) {
+
+
+
+    if (game_exists ) {
         window.RufflePlayer = window.RufflePlayer || {};
        
         const ruffle = window.RufflePlayer.newest();
@@ -62,10 +65,17 @@ async function Load() {
         const container = document.getElementById("container");
         container.appendChild(player);
 
-        const parsed = game.split(".swf")[0]
-        player.load(`/games/${parsed}/game.swf`);
+         if(atob(game).match("https")){
+                player.load(atob(game));
+        } else {
+                    const parsed = game.split(".swf")[0]
+                    player.load(`/games/${parsed}/game.swf`);
+         }
+
         
-    } else {
+    
+        
+    } else
         document.getElementById("status").innerText = "O jogo indicado não está disponível.";
     }
 }
