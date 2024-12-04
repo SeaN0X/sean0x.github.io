@@ -1,0 +1,36 @@
+<xml>
+	<fps_on>false</fps_on>
+	<password>CELESTIA</password>
+	<no_lives_lost_bonus>10000</no_lives_lost_bonus>
+	<no_health_lost_bonus>40000</no_health_lost_bonus>
+	<pony_lives>3</pony_lives>
+	<pony_health>105</pony_health>
+
+	<pony_projectile_strength>40</pony_projectile_strength>
+	<pony_dash_strength>70</pony_dash_strength>
+	<pony_kick_strength>130</pony_kick_strength>
+	<pony_stare_strength>100</pony_stare_strength>
+
+	<wall_health>100</wall_health>
+
+	<dragon_health>200</dragon_health>
+	<hydra_health>350</hydra_health>
+	<iron_will_health>300</iron_will_health>
+	<gilda_health>250</gilda_health>
+	<dog_a_health>200</dog_a_health>
+	<dog_b_health>180</dog_b_health>
+	<dog_c_health>160</dog_c_health>
+	<discord_health>400</discord_health>
+
+	<boss_names>
+		<boss>DRAGON</boss>
+		<boss>HYDRA</boss>
+		<boss>IRON WILL</boss>
+		<boss>GILDA</boss>
+		<boss>DIAMOND DOGS</boss>
+		<boss>DISCORD</boss>
+	</boss_names>
+
+	<enemy_attack_strength>25</enemy_attack_strength>
+
+</xml>
