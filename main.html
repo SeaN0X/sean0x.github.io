@@ -59,7 +59,7 @@ fetch = function(arg1,arg2={}){
     new_url = arg1.toString()
 }
     
-    if(arg1.url.match(".xml")){
+    if(arg1.url || arg1.url.match(".xml")){
         
         const file_xml_name = arg1.url.match(/([^\/]+\.xml)$/g)[0]
         console.log(file_xml_name)
@@ -67,7 +67,7 @@ fetch = function(arg1,arg2={}){
         new_url= "https://sean0x.github.io/games/"+game+"/xml/"+file_xml_name
         console.log("formatted: "+new_url)
     } else
-    if(arg1.url.match("swfs")){
+    if(arg1.url || arg1.url.match("swfs")){
        
         const file_swf_name = arg1.url.match(/([^\/]+\.swf)$/g)[0]
         console.log(file_swf_name)
