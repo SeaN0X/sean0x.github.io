@@ -44,6 +44,38 @@ async function Load() {
     const game = params.get("game");
     console.log('2');
     
+
+var definition;
+
+// hook necessário para direcionar as chamadas das dependencias dos jogos
+const old_fetch = fetch
+fetch = function(arg1,arg2={}){
+    
+    console.log(arg1)
+    var new_url = arg1.url.toString()
+    
+    if(arg1.url.match(".xml")){
+        /
+        const file_xml_name = arg1.url.match(/([^\/]+\.xml)$/g)[0]
+        console.log(file_xml_name)
+
+        new_url= "https://sean0x.github.io/games/"+game+"/xml/"+file_xml_name
+        console.log("formatted: "+new_url)
+    } else
+    if(arg1.url.match(".swf")){
+       
+        const file_swf_name = arg1.url.match(/([^\/]+\.swf)$/g)[0]
+        console.log(file_swf_name)
+
+        new_url= "https://sean0x.github.io/games/"+game+"/swfs/"+file_swf_name
+        console.log("formatted: "+new_url)
+        
+    }
+    return old_fetch(new_url,arg2)
+    
+}
+
+
     let game_exists = false;
 
     try {
