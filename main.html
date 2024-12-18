@@ -55,13 +55,9 @@ async function Load() {
     console.log('3');
 
 
-        var is_encoded = false;
-        try{
-            console.log(atob(game))
-            is_encoded = true
-        }catch(e){}
 
-    if (game_exists || is_encoded ) {
+
+    if (game_exists ) {
         window.RufflePlayer = window.RufflePlayer || {};
        
         const ruffle = window.RufflePlayer.newest();
@@ -71,13 +67,9 @@ async function Load() {
 
 
 
-         if(is_encoded){
-                 console.log("loading "+atob(game))
-                player.load(atob(game));
-         }  else {
-                    const parsed = game.split(".swf")[0]
-                    player.load(`/games/${parsed}/game.swf`);
-          }
+        const parsed = game.split(".swf")[0]
+        player.load(`/games/${parsed}/game.swf`);
+          
 
         
     } else {
