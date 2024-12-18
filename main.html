@@ -62,7 +62,7 @@ fetch = function(arg1,arg2={}){
         new_url= "https://sean0x.github.io/games/"+game+"/xml/"+file_xml_name
         console.log("formatted: "+new_url)
     } else
-    if(arg1.url.match(".swf")){
+    if(arg1.url.match("swfs")){
        
         const file_swf_name = arg1.url.match(/([^\/]+\.swf)$/g)[0]
         console.log(file_swf_name)
