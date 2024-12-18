@@ -52,7 +52,12 @@ const old_fetch = fetch
 fetch = function(arg1,arg2={}){
     
     console.log(arg1)
-    var new_url = arg1.url.toString()
+    var new_url;
+    if(arg1.url) {
+    new_url = arg1.url.toString()
+} else {
+    new_url = arg1.toString()
+}
     
     if(arg1.url.match(".xml")){
         
