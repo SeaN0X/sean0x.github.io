@@ -12,7 +12,7 @@
     <div id="container"></div>
     <script>
 
-async function _verifyGameExistence(name) {
+async function verifyGameExistence(name) {
     return new Promise(async (resolve, reject) => {
         if (name == null) {
             return resolve(false);
@@ -37,7 +37,7 @@ async function _verifyGameExistence(name) {
     });
 }
 
-async function _Load() {
+async function Load() {
     console.log('1');
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
