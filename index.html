@@ -75,6 +75,9 @@
                 align-items: center;    /* Centers items horizontally */
                 
             }
+            a {
+                color: rgb(255, 251, 0)
+            }
 
             #item {
                 display:flex;
@@ -185,7 +188,7 @@
                 if(links && links.length !=0) {
 
                     for(let i=0; i<links.length; i++) {
-                        description.innerHTML = description.innerHTML.replace("{l}","<a href='"+links[i]+"'>"+links[i]+"<a>")
+                        description.innerHTML = description.innerHTML.replace("{l}","<a href='"+links[i][1]+"'>"+links[i][0]+"</a>")
                     }
                 } 
                 description_div.appendChild(description)
@@ -203,9 +206,9 @@
             }
             add_cat("./pictures/sean0x_hello.webp","SeaN0X","My real life name is victor, but online most people call me Sea.")
             add_cat("","A little about me","I am 18 years old, male, Brazillian 🇧🇷, agnostic, mostly introvert. I also speak portuguese and english. i mostly spend my time on the internet doing a bit of anything, to be honest. nowadays i mostly like drawing and playing games, wherever you met me is somewhere i like to spend time! i am also a polymath, if you're deeply interested on basically anything and would like to talk about it with me, i'd love to learn!");
-            add_cat("","Why does this site exist at all?","I did not live enough to see them myself, but i loved those old internet, super creative html profiles people made on early internet. i just feel like there isn't anywhere else for poeple to actively express themselves, and with the dead internet theory ({l}) coming to reality every day and people consuming more and more over creating, i just feel like i wanted a space of my own to share this idea, that you can still make your own unique stuff.")
+            add_cat("","Why does this site exist at all?","I did not live enough to see them myself, but i loved those old internet, super creative html profiles people made on early internet, like those from {l}. i just feel like there isn't anywhere else for poeple to actively express themselves, and with the {l} coming to reality every day and people consuming more and more over creating, i just feel like i wanted a space of my own to share this idea, that you can still make your own unique stuff.",[["myspace","https://www.google.com/search?udm=2&q=myspace+profiles"],["dead internet theory","https://en.wikipedia.org/wiki/Dead_Internet_theory"]])
             add_normal_text("Stuff i like")
-            add_cat("./pictures/anima3.webp","Geometry Dash", "I've been playing this game since 2023 and i broke 2 keyboards beacuse of it, still like it though. This is my profile on GDDL: {l}",["https://gdladder.com/profile/59193"])
+            add_cat("./pictures/anima3.webp","Geometry Dash", "I've been playing this game since 2023 and i broke 2 keyboards beacuse of it, still like it though. Click {l} to access my GDDL profile :P",[["HERE","https://gdladder.com/profile/59193"]])
             add_cat("./pictures/osu.png","Osu","since i bought a digital tablet to make art, in 2026, i also tried osu, now it's also my favorite game, i play it when i don't want to rage with GD, and i'm working my way to 4 stars now. this game is just so satisfying and less punishing than GD and i love how i can play it at any moment.")
             add_cat("./pictures/anima2.webp","Art","This is my main hobby today! i began taking art seriously in 2021 when i was on the my little pony community, and since then i fell in love with drawing, i genuinely just like the idea of knowing i don't understand how an concept works, and then understanding and being able to bring it to a visual myself with total freedom, i mainly draw furry characters nowadays")
             add_cat("./pictures/programming.png","Programming", "I was interested in programming since 2017 but i really began learning in 2019 when i was with a hyperfocus on making discord selfbots, nowadays i rarely code, but i still use stuff i learned daily for something, even for this site! (don't look at the source code, it's terrible....) and i still love programming in C and Javascript today.")
